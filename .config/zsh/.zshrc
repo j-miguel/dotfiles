@@ -20,7 +20,7 @@ function zsh_add_plugin() {
     if ! [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
         git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
     fi
-    zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+    # zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
     zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
 }
 
@@ -110,4 +110,7 @@ source /usr/share/nvm/init-nvm.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/plugins/.p10k.zsh ]] || source ~/.config/zsh/plugins/.p10k.zsh
-unsetopt complete_aliases
+
+# Syntax Highlighting
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+
