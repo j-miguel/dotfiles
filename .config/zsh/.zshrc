@@ -5,6 +5,25 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+# PLUGIN HELPER
+function zsh_add_file() {
+    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+}
+function zsh_add_plugin() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if ! [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+    fi
+    zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+    zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+}
+
 # PATH
 path+='/home/j-miguel/.cargo/bin'
 path+='/home/j-miguel/.local/bin'
@@ -19,6 +38,8 @@ alias ls="ls --color"
 alias ...='cd ../..'
 alias lsd='ls -aFhlG'
 alias size='du -sckx * | sort -nr'
+alias cat='bat'
+alias catt='cat'
 
 # GIT
 alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
@@ -27,7 +48,7 @@ alias gss="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 alias gsss="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''   %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 # PLUGINS
-source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
 
 # GENERAL
 unsetopt beep
@@ -51,6 +72,10 @@ setopt correctall #arguments
 
 # COMPLETION
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# FZF
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 export EDITOR="vim"
 
