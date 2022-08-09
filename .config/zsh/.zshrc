@@ -8,7 +8,6 @@ fi
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots)
 
 # PLUGIN HELPER
@@ -76,6 +75,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # FZF
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
+compinit
 
 export EDITOR="vim"
 
