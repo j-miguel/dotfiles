@@ -39,6 +39,7 @@ alias lsd='ls -aFhlG'
 alias size='du -sckx * | sort -nr'
 alias cat='bat'
 alias catt='cat'
+alias vim="nvim"
 
 # GIT
 alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
