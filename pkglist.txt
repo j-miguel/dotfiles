@@ -1,0 +1,7 @@
+zsh
+neovim
+git
+openssh
+bat
+nvim-packer-git
+zsh-theme-powerlevel10k-git
