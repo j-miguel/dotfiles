@@ -3,7 +3,6 @@ neovim
 git
 openssh
 wget
-fz
+fzf
 bat
-nvim-packer-git
 zsh-theme-powerlevel10k-git
