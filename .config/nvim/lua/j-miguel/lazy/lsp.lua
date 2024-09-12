@@ -120,9 +120,18 @@ return { -- LSP Configuration & Plugins
 					},
 				},
 			},
-			ruff_lsp = {
+			ruff = {
+				settings = {},
+			},
+			pylsp = {
 				settings = {
-					args = {},
+					pylsp = {
+						plugins = {
+							rope_autoimport = {
+								enabled = true,
+							},
+						},
+					},
 				},
 			},
 			pyright = {
@@ -133,7 +142,6 @@ return { -- LSP Configuration & Plugins
 					},
 					python = {
 						analysis = {
-							-- Ignore all files for analysis to exclusively use Ruff for linting
 							typeCheckingMode = "strict",
 						},
 					},
