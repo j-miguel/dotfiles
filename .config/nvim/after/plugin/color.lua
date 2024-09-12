@@ -1,24 +1,45 @@
---vim.g.tokyonight_transparent = true
 --vim.g.tokyonight_style = "night"
 --vim.opt.background = "dark"
 
 --vim.cmd("colorscheme tokyonight")
 
-require("tokyonight").setup {
-    transparent = true,
-    styles = {
-       sidebars = "transparent",
-       floats = "transparent",
-    }
-}
+require("tokyonight").setup({
+	-- style = "night",
+	style = "storm",
+	transparent = true,
+	terminal_colors = true,
+	styles = {
+		comments = { italic = false },
+		keywords = { italic = false },
+		sidebars = "dark",
+		floats = "dark",
+		-- sidebars = "transparent",
+		-- floats = "transparent",
+	},
+})
 
-function ColorMyPencils(color) 
-    color = color or "tokyonight"
-	vim.cmd.colorscheme(color)
+require("rose-pine").setup({
+	disable_background = true,
+	styles = {
+		italic = false,
+	},
+})
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+require("kanagawa").setup({
+	colors = {
+		theme = {
+			all = {
+				ui = {
+					bg_gutter = "none",
+				},
+			},
+		},
+	},
+})
 
-end
-
-ColorMyPencils()
+-- vim.cmd.colorscheme("tokyonight")
+-- vim.cmd("colorscheme rose-pine")
+-- vim.cmd("colorscheme rose-pine-main")
+-- vim.cmd("colorscheme kanagawa-wave")
+vim.cmd("colorscheme kanagawa-dragon")
+-- vim.cmd("colorscheme kanagawa-lotus")
