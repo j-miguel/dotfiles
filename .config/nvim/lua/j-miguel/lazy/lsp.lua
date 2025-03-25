@@ -147,6 +147,15 @@ return { -- LSP Configuration & Plugins
 					},
 				},
 			},
+			ts_ls = {
+				settings = {},
+			},
+			svelte = {
+				settings = {},
+			},
+			tailwindcss = {
+				settings = {},
+			},
 		}
 
 		-- Ensure the servers and tools above are installed
