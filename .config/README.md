@@ -27,7 +27,7 @@ If wsl, in ps:
     
     `yay -S --noconfirm zsh-theme-powerlevel10k-git`
 
-
+    pnpm env use --global lts
 
 
 
