@@ -6,3 +6,4 @@ wget
 fzf
 bat
 zsh-theme-powerlevel10k-git
+ripgrep
